@@ -11,7 +11,6 @@
     <link rel="icon" href="Assets/flowslogo.png" type="image/x-icon">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 
     <title>FLOWS | Smart Early Warning System</title>
 
@@ -465,27 +464,6 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-
-        // ================================
-        // 🔔 ONE SIGNAL PUSH NOTIFICATION
-        // ================================
-        window.OneSignalDeferred = window.OneSignalDeferred || [];
-        
-        OneSignalDeferred.push(async function(OneSignal) {
-        
-            await OneSignal.init({
-                appId: "5ae31e3b-a955-44b7-a36c-1aba408ef6c9",
-                notifyButton: {
-                    enable: true
-                },
-                allowLocalhostAsSecureOrigin: true
-            });
-        
-            console.log("OneSignal berhasil init");
-        
-            // 🔥 INI YANG MEMUNCULKAN POPUP IZIN
-            await OneSignal.Notifications.requestPermission();
-        });
 
         // --- FUNGSI REGISTER (Updated with SweetAlert2) ---
         document.getElementById('registerForm').addEventListener('submit', function(e) {
