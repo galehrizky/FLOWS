@@ -664,24 +664,6 @@
 
         let lastStatus = "";
 
-        function showDangerNotification() {
-            if (Notification.permission === "granted") {
-                new Notification("⚠️ FLOWS WARNING", {
-                    body: "Kondisi banjir dalam status BAHAYA!",
-                    icon: "Assets/flowslogo.png"
-                });
-            }
-        }
-
-        function showWarningNotification() {
-            if (Notification.permission === "granted") {
-                new Notification("⚠️ FLOWS ALERT", {
-                    body: "Status sistem berada pada kondisi WASPADA!",
-                    icon: "Assets/flowslogo.png"
-                });
-            }
-        }
-
         const dataPath = ref(db, 'FLOWS');
         onValue(dataPath, (snapshot) => {
             const data = snapshot.val();
@@ -717,10 +699,6 @@
                     alarm.pause();
                     alarm.currentTime = 0;
 
-                    // Notifikasi hanya muncul saat status berubah ke WASPADA
-                    if (lastStatus !== "WASPADA") {
-                            showWarningNotification();
-                    }
                 } else if (st === "BAHAYA") {
                     document.getElementById("status-bahaya").classList.add("active-bahaya");
 
@@ -728,10 +706,6 @@
                         console.log("Menunggu interaksi user untuk suara.")
                     );
 
-                    // Notifikasi hanya saat status berubah
-                    if (lastStatus !== "BAHAYA") {
-                        showDangerNotification();
-                    }
                 }
 
                 lastStatus = st;
@@ -805,10 +779,11 @@
     
             notifyButton: {
                 enable: true
-            }
+            },
+
+            allowLocalhostAsSecureOrigin: true
         });
 
-        await OneSignal.Notifications.requestPermission();
         console.log("OneSignal berhasil init");
     
     });
