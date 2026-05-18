@@ -545,11 +545,6 @@
         
         const savedUsername = localStorage.getItem("username") || "Commander";
 
-        // Request izin notifikasi browser
-        if ("Notification" in window) {
-            Notification.requestPermission();
-        }
-
         const userDisplay = document.getElementById("usernameDisplay");
         if(userDisplay) userDisplay.innerText = savedUsername;
 
@@ -797,19 +792,24 @@
 
             doc.save(`History_Flows_${savedUsername}.pdf`);
         }
-    </script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 
     <script>
     window.OneSignalDeferred = window.OneSignalDeferred || [];
+    
     OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.init({
-        appId: "5ae31e3b-a955-44b7-a36c-1aba408ef6c9"
-      });
-      await OneSignal.Notifications.requestPermission();
+    
+        await OneSignal.init({
+            appId: "5ae31e3b-a955-44b7-a36c-1aba408ef6c9",
+    
+            notifyButton: {
+                enable: true
+            }
+        });
+    
+        console.log("OneSignal berhasil init");
+    
     });
     </script>
-    
-    </body>
 </body>
 </html>
