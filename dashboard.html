@@ -527,6 +527,22 @@
         const db = getDatabase(app);
 
         const alarm = document.getElementById("alarmSound");
+        let audioEnabled = false;
+
+        // Aktifkan audio setelah interaksi pertama user
+        document.addEventListener("click", () => {
+            if (!audioEnabled) {
+                alarm.play()
+                    .then(() => {
+                        alarm.pause();
+                        alarm.currentTime = 0;
+                        audioEnabled = true;
+                        console.log("Audio berhasil diaktifkan");
+                    })
+                    .catch(err => console.log(err));
+            }
+        }, { once: true });
+        
         const savedUsername = localStorage.getItem("username") || "Commander";
 
         // Request izin notifikasi browser
