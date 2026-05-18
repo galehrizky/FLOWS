@@ -296,6 +296,55 @@
             font-size: 0.9rem;
             margin-bottom: 20px;
         }
+
+        /* TAMBAHKAN DI SINI */
+        @media (max-width: 576px) {
+
+        .history-panel {
+            padding: 10px;
+        }
+
+        .table-custom {
+            min-width: 600px;
+        }
+
+        .table-custom thead th,
+        .table-custom tbody td {
+            font-size: 0.65rem;
+            padding: 8px 4px;
+            white-space: nowrap;
+        }
+
+        .table-custom th:nth-child(1),
+        .table-custom td:nth-child(1) {
+            width: 8%;
+        }
+
+        .table-custom th:nth-child(2),
+        .table-custom td:nth-child(2) {
+            width: 22%;
+        }
+
+        .table-custom th:nth-child(3),
+        .table-custom td:nth-child(3) {
+            width: 18%;
+        }
+
+        .table-custom th:nth-child(4),
+        .table-custom td:nth-child(4) {
+            width: 16%;
+        }
+
+        .table-custom th:nth-child(5),
+        .table-custom td:nth-child(5) {
+            width: 16%;
+        }
+
+        .table-custom th:nth-child(6),
+        .table-custom td:nth-child(6) {
+            width: 20%;
+        }
+    }
     </style>
 </head>
 <body>
@@ -331,7 +380,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="user-tag">
-                    <h6>SYSTEM OPERATOR: <span id="usernameDisplay">Commander</span></h6>
+                    <h6>Operator: <span id="usernameDisplay">Commander</span></h6>
                 </div>
             </div>
             <a href="index.html" class="btn-logout"><i class="fas fa-power-off me-2"></i> LOGOUT</a>
@@ -445,7 +494,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Waktu</th>
-                                    <th>Jarak (cm)</th>
+                                    <th>Jarak</th>
                                     <th>Soil</th>
                                     <th>Rain</th>
                                     <th>Status</th>
