@@ -792,6 +792,7 @@
 
             doc.save(`History_Flows_${savedUsername}.pdf`);
         }
+    </script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 
     <script>
@@ -806,7 +807,8 @@
                 enable: true
             }
         });
-    
+
+        await OneSignal.Notifications.requestPermission();
         console.log("OneSignal berhasil init");
     
     });
