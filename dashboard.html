@@ -665,7 +665,7 @@
         }
 
         // Interval data histori setiap 5 menit tetap berjalan
-        setInterval(updateHistoryTable, 2000);
+        setInterval(updateHistoryTable, 300000);
 
         let lastStatus = "";
 
@@ -798,5 +798,17 @@
             doc.save(`History_Flows_${savedUsername}.pdf`);
         }
     </script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
+    <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "5ae31e3b-a955-44b7-a36c-1aba408ef6c9"
+      });
+    });
+    </script>
+    
+    </body>
 </body>
 </html>
